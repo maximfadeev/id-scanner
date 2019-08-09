@@ -229,13 +229,13 @@ def photo_extract(image, type_mrz):
     photo = photo.resize((2000, 1200))
     if type_mrz == "TD1":
         photo = photo.crop((120, 330, 600, 930))
-        photo.show()
+        # photo.show()
     elif type_mrz == "TD2":
         photo = photo.crop((160, 240, 660, 930))
-        photo.show()
+        # photo.show()
     elif type_mrz == "TD3":
         photo = photo.crop((80, 260, 540, 890))
-        photo.show()
+        # photo.show()
     return photo
 
 
@@ -395,28 +395,26 @@ def scan_id(img_front_path, img_back_path):
         return None, None
 
     else:
-        # photo = photo_extract(img_front_path, mrz_type)
+        photo = photo_extract(img_front_path, mrz_type)
         correct_mrz["issue_date"] = correct_issue_date[2:]
         correct_mrz["issuer"] = correct_issuer
         print_all(correct_mrz)
         stop_time = timer()
         print("Duration: ", stop_time - start_time)
-        return correct_mrz
+        return correct_mrz, photo
 
 
-
-
-scan_id("app_sasha_front.jpeg", "app_adil_back.jpeg")
-scan_id("app_sasha_front.jpeg", "app_abay_back.jpeg")
-scan_id("app_sasha_front.jpeg", "app_sasha_back.jpeg")
-scan_id("app_sasha_front.jpeg", "app_dima_back.jpeg")
-scan_id("app_sasha_front.jpeg", "app_gulnaz_back.jpeg")
-scan_id("app_sasha_front.jpeg", "app_aset_back.jpeg")
-scan_id("app_sasha_front.jpeg", "app_aldiar_back.jpeg")
-scan_id("app_sasha_front.jpeg", "app_zhanel_back.jpeg")
-scan_id("passport_marzhan.jpg", "blank.jpeg")
-scan_id("app_sasha_front.jpeg", "app_marzhan_good.jpeg")
-scan_id("app_sasha_front.jpeg", "app_marzhan_bad.jpeg")
-scan_id("app_sasha_front.jpeg", "app.jpeg")
-scan_id("lamin.jpeg", "lamin_back.jpeg")
-scan_id("blank.jpeg", "blank.jpeg")
+scan_id("app_photos/app_sasha_front.jpeg", "app_photos/app_adil_back.jpeg")
+scan_id("app_photos/app_sasha_front.jpeg", "app_photos/app_abay_back.jpeg")
+scan_id("app_photos/app_sasha_front.jpeg", "app_photos/app_sasha_back.jpeg")
+scan_id("app_photos/app_sasha_front.jpeg", "app_photos/app_dima_back.jpeg")
+scan_id("app_photos/app_sasha_front.jpeg", "app_photos/app_gulnaz_back.jpeg")
+scan_id("app_photos/app_sasha_front.jpeg", "app_photos/app_aset_back.jpeg")
+scan_id("app_photos/app_sasha_front.jpeg", "app_photos/app_aldiar_back.jpeg")
+scan_id("app_photos/app_sasha_front.jpeg", "app_photos/app_zhanel_back.jpeg")
+scan_id("app_photos/passport_marzhan.jpg", "app_photos/blank.jpeg")
+scan_id("app_photos/app_sasha_front.jpeg", "app_photos/app_marzhan_good.jpeg")
+scan_id("app_photos/app_sasha_front.jpeg", "app_photos/app_marzhan_bad.jpeg")
+scan_id("app_photos/app_sasha_front.jpeg", "app_photos/app.jpeg")
+scan_id("app_photos/lamin.jpeg", "app_photos/lamin_back.jpeg")
+scan_id("app_photos/blank.jpeg", "app_photos/blank.jpeg")
